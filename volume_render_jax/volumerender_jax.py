@@ -45,6 +45,16 @@ def main():
     f = h5.File('C12_Beta2_256_0060.h5', 'r')
     datacube = jnp.array(f['density'])    
 
+    # AREPO
+    # f = h5.File('Density_B100snap_156_512.hdf5')
+    # f = h5.File('snap_156.hdf5')
+    # datacube = jnp.array(f['Density'])
+    
+    # CAMELS
+    # f = h5.File('snapshot_014.hdf5', 'r')
+    # coords = jnp.array(f['PartType1']['Coordinates'])
+    # datacube = jnp.array(f['PartType1']['SubfindDMDensity'])
+    # print('jnp.shape(datacube)',jnp.shape(datacube))
 
     # Datacube Grid
     Nx, Ny, Nz = datacube.shape
@@ -108,6 +118,9 @@ def main():
     plt.savefig('render/projection_jax.png',dpi=240,  bbox_inches='tight', pad_inches = 0)
     plt.show()
     
+    # import subprocess
+    # subprocess.call(f'''ffmpeg -i render/volumerender_jax%03d.jpg -vcodec libx264 -vf 'pad=ceil(iw/2)*2:ceil(ih/2)*2' -r 24 -y -an video.mp4'''.split())
+    # ffmpeg -i render/volumerender_jax%03d.jpg -vcodec libx264 -vf 'pad=ceil(iw/2)*2:ceil(ih/2)*2' -r 24 -y -an video.mp4
 
     return 0
 
