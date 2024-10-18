@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["volume_render_jax"]
+build-backend = "volume_render_jax.build_meta"
 
 [project]
 name = "py_template"
@@ -12,7 +12,7 @@ authors = [
   { name = "Jeff Jennings", email = "jjennings@flatironinstitute.org" },
 ]
 requires-python = ">=3.10"
-dependencies = ["numpy>=1.24"]
+dependencies = ["numpy>=1.24", "jax"]
 
 [project.optional-dependencies]
 test = [
@@ -37,11 +37,11 @@ type_checking = [
 ]
 dev = ["py_template[test, docs, coding_standards]"]
 
-[tool.setuptools]
+[tool.volume_render_jax]
 zip-safe = false
 include-package-data = true
 
-[tool.setuptools.packages.find]
+[tool.volume_render_jax.packages.find]
 
 [tool.pytest.ini_options]
 testpaths = [
